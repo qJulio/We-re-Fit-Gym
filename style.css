@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
 :root {
     --black: #000000;
     --white: #ffffff;
     --accent: #2ecc71;
-    --glass: rgba(255, 255, 255, 0.07);
-    --border: rgba(255, 255, 255, 0.15);
+    --glass: rgba(255, 255, 255, 0.08);
 }
 
 * { 
@@ -17,118 +18,119 @@ body {
     background-color: var(--black);
     color: var(--white);
     font-family: 'Montserrat', sans-serif;
-    line-height: 1.5;
     overflow-x: hidden;
+    /* Esto evita que el texto se vea minúsculo */
+    -webkit-text-size-adjust: 100%;
 }
 
-/* --- NAVEGACIÓN --- */
+/* NAVBAR RESPONSIVA */
 nav {
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 20px 5%; 
-    background: rgba(0,0,0,0.95);
-    position: fixed; 
-    width: 100%; 
+    padding: 20px 6%;
+    background: rgba(0,0,0,0.9);
+    position: fixed;
+    width: 100%;
     z-index: 1000;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.logo { font-weight: 900; letter-spacing: 3px; font-size: 1.1rem; }
-.nav-links { display: flex; list-style: none; }
-.nav-links li { margin-left: 20px; }
-.nav-links a { text-decoration: none; color: white; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.logo { font-weight: 900; letter-spacing: 2px; font-size: 1rem; }
 
-/* --- HERO SECTION --- */
+.nav-links { display: flex; list-style: none; }
+.nav-links a { 
+    text-decoration: none; 
+    color: white; 
+    font-size: 10px; 
+    font-weight: 700; 
+    margin-left: 15px;
+    text-transform: uppercase;
+}
+
+/* HERO AJUSTADO PARA MÓVIL */
 .hero {
     height: 100vh;
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 0 10%;
     background-size: cover;
     background-position: center;
 }
 
-.hero h1 { 
-    font-size: clamp(2.5rem, 8vw, 5rem); 
-    font-weight: 900; 
+.hero h1 {
+    font-size: clamp(2rem, 10vw, 4rem); /* Tamaño fluido */
+    font-weight: 900;
+    text-transform: uppercase;
     line-height: 1.1;
     margin-bottom: 20px;
 }
 
-.hero p { font-size: 1.1rem; color: #ccc; margin-bottom: 30px; max-width: 600px; }
+.hero p {
+    font-size: 1rem;
+    color: #bbb;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
 
-/* --- BOTONES --- */
-.btn-premium, .btn-outline {
+/* BOTONES GRANDES PARA TOUCH */
+.btn-premium {
     padding: 18px 40px;
     border: 1px solid white;
     color: white;
     text-decoration: none;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 2px;
     display: inline-block;
     transition: 0.3s;
 }
 
-/* --- CARDS --- */
+/* CONTENEDORES TIPO TARJETA */
 .glass-card {
     background: var(--glass);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 30px 20px;
     border-radius: 15px;
-    margin-bottom: 20px;
+    margin: 20px auto;
+    width: 90%;
 }
 
-/* -----------------------------------------
-   AJUSTES PARA TELÉFONO (MÓVIL)
--------------------------------------------- */
+/* MEDIA QUERIES: AQUÍ SE ARREGLA EL TELÉFONO */
 @media (max-width: 768px) {
-    nav { padding: 15px 5%; }
-    
-    .nav-links { display: none; } /* Ocultamos links para que no se amontonen */
-
-    .hero h1 { 
-        font-size: 2.8rem; /* Texto GRANDE y legible */
-        letter-spacing: -1px;
+    .nav-links {
+        display: none; /* Ocultamos los links pequeños en móvil */
     }
 
-    .hero p { font-size: 1rem; }
-
-    .btn-premium, .btn-outline {
-        width: 100%; /* Botón ancho total para tocar fácil con el pulgar */
-        text-align: center;
+    .hero h1 {
+        font-size: 2.5rem; /* Tamaño imponente en pantalla pequeña */
     }
 
-    /* Sucursales: Las fotos y el texto ahora van uno abajo del otro */
-    div[style*="display: grid"], 
-    div[style*="display: flex"] {
-        display: block !important; 
+    /* Membresías en lista vertical */
+    .pricing-grid, .form-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 100px 5% !important;
     }
 
     .glass-card {
-        padding: 20px;
-        margin: 10px 5%; /* Centramos la tarjeta con margen a los lados */
+        width: 100%;
+        margin-bottom: 20px;
     }
 
-    /* Forzar que las imágenes de sucursal se vean bien */
-    div[style*="background"] {
+    /* Sucursales apiladas */
+    .sucursal-item {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .map-container {
         width: 100% !important;
-        height: 200px !important;
-        margin-top: 15px;
-        border-radius: 10px;
-    }
-
-    .form-grid {
-        display: block !important;
-    }
-    
-    input, .input-line {
-        font-size: 16px !important; /* Evita que el iPhone haga zoom al escribir */
+        height: 250px !important;
+        margin-top: 20px;
     }
 }
