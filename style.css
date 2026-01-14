@@ -2,126 +2,46 @@
     --black: #000000;
     --gray-dark: #0a0a0a;
     --white: #ffffff;
-    --accent-green: #2ecc71;
-    --glass: rgba(255, 255, 255, 0.05);
+    --accent: #2ecc71;
+    --glass: rgba(255, 255, 255, 0.08);
     --border: rgba(255, 255, 255, 0.1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-    background-color: var(--black);
-    color: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
+/* --- RESET & BASE --- */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent; 
 }
-
-/* NAVBAR EQUINOX STYLE */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8%;
-    background: rgba(0,0,0,0.95);
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border);
-}
-
-.logo { font-weight: 900; letter-spacing: 6px; font-size: 1.2rem; }
-.nav-links { display: flex; list-style: none; }
-.nav-links li { margin-left: 30px; }
-.nav-links a {
-    text-decoration: none;
-    color: var(--white);
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-/* HERO SECTIONS */
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-    padding: 0 10%;
-}
-
-.hero h1 { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 900; margin-bottom: 20px; }
-.hero p { max-width: 800px; color: #ccc; margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6; }
-
-/* BUTTONS */
-.btn-outline {
-    padding: 15px 40px;
-    border: 1px solid var(--white);
-    color: var(--white);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    border-radius: 4px;
-    transition: 0.3s;
-}
-.btn-outline:hover { background: var(--white); color: var(--black); }
-
-/* CARDS & CONTAINERS */
-.glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
-    padding: 40px;
-    border-radius: 15px;
-}
-
-.check-list { list-style: none; margin-top: 20px; }
-.check-list li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.9rem; }
-.check-list li::before { content: '✓'; color: var(--accent-green); margin-right: 15px; font-weight: 900; }
-
-/* FORMS */
-.input-line {
-    width: 100%;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid #333;
-    padding: 15px 0;
-    color: white;
-    margin-bottom: 30px;
-    font-family: inherit;
-}
-.input-line:focus { outline: none; border-bottom-color: white; }
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --accent: #2ecc71;
-    --glass: rgba(255, 255, 255, 0.05);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background-color: var(--black);
     color: var(--white);
     font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
+    overflow-x: hidden;
+    font-size: 16px;
 }
 
-/* Fix para elementos AOS que no aparecen */
+/* Fix para animaciones AOS */
 [data-aos] { pointer-events: none; }
 .aos-animate { pointer-events: auto; }
 
+/* --- NAVEGACIÓN --- */
 nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 20px 8%; background: rgba(0,0,0,0.95);
-    position: fixed; width: 100%; z-index: 1000;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 8%; 
+    background: rgba(0,0,0,0.95);
+    position: fixed; 
+    width: 100%; 
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
 }
 
+.logo { font-weight: 900; letter-spacing: 4px; font-size: 1.2rem; text-transform: uppercase; }
 .nav-links { display: flex; list-style: none; }
 .nav-links li { margin-left: 30px; }
 .nav-links a { 
@@ -129,25 +49,124 @@ nav {
     font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
 }
 
+/* --- HERO SECTION --- */
 .hero {
-    height: 100vh; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; text-align: center;
-    background-size: cover; background-position: center; padding: 0 10%;
+    height: 100vh; 
+    min-height: 600px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    background-size: cover; 
+    background-position: center; 
+    padding: 0 5%;
 }
 
-.hero h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 900; margin-bottom: 20px; }
-
-.btn-premium {
-    padding: 18px 45px; border: 1px solid var(--white);
-    color: var(--white); text-decoration: none;
-    font-size: 12px; font-weight: 700; letter-spacing: 3px;
-    transition: 0.4s; display: inline-block; position: relative; z-index: 10;
+.hero h1 { 
+    font-size: clamp(2.2rem, 8vw, 5rem); 
+    font-weight: 900; 
+    margin-bottom: 20px; 
+    line-height: 1.1;
+    text-transform: uppercase;
 }
 
-.btn-premium:hover { background: var(--white); color: var(--black); }
+.hero p { 
+    max-width: 700px; 
+    color: #ccc; 
+    margin-bottom: 40px; 
+    font-size: clamp(1rem, 2vw, 1.2rem); 
+}
 
+/* --- BOTONES --- */
+.btn-premium, .btn-outline {
+    padding: 18px 45px; 
+    border: 1px solid var(--white);
+    color: var(--white); 
+    text-decoration: none;
+    font-size: 12px; 
+    font-weight: 700; 
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: 0.4s; 
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.btn-premium:hover, .btn-outline:hover { 
+    background: var(--white); 
+    color: var(--black); 
+}
+
+/* --- CARDS & GLASS --- */
 .glass-card {
-    background: var(--glass); backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 40px; border-radius: 15px; margin-bottom: 30px;
+    background: var(--glass); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border);
+    padding: 40px; 
+    border-radius: 15px; 
+    margin-bottom: 30px;
+}
+
+/* --- LISTAS & FORMS --- */
+.check-list { list-style: none; margin-top: 20px; }
+.check-list li { margin-bottom: 12px; display: flex; align-items: center; font-size: 0.9rem; }
+.check-list li::before { content: '✓'; color: var(--accent); margin-right: 15px; font-weight: 900; }
+
+.input-line {
+    width: 100%; background: transparent; border: none;
+    border-bottom: 1px solid #333; padding: 15px 0;
+    color: white; margin-bottom: 30px; font-family: inherit;
+}
+.input-line:focus { outline: none; border-bottom-color: white; }
+
+/* -----------------------------------------
+   MEDIA QUERIES (PARA TELÉFONOS)
+-------------------------------------------- */
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 5%;
+    }
+
+    .logo {
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        display: none; /* Ocultamos menú en móvil para diseño limpio */
+    }
+
+    .hero {
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem; /* Tamaño grande pero legible en móvil */
+    }
+
+    .btn-premium, .btn-outline {
+        width: 100%; /* Botones de ancho completo para pulgares */
+        padding: 20px;
+        text-align: center;
+    }
+
+    .glass-card {
+        padding: 25px 15px;
+        display: block !important; /* Forzamos que las columnas de sucursales se apilen */
+    }
+
+    /* Ajuste para que las imágenes de sucursales no desaparezcan */
+    .glass-card div[style*="background"] {
+        width: 100% !important;
+        height: 200px !important;
+        margin-top: 20px;
+    }
+
+    /* Ajuste para grids de formularios o precios */
+    div[style*="grid-template-columns"] {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
 }
