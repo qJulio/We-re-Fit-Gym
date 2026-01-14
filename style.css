@@ -172,3 +172,50 @@ nav {
     .branch-info { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 60px; }
     .branch-map { flex: 1.5; height: 100%; }
 }
+/* --- LÓGICA DEL MENÚ MÓVIL (ARREGLO) --- */
+@media (max-width: 1024px) {
+    /* Ocultamos los links por defecto en el cel */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Debajo de la barra negra */
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 40px 0;
+        text-align: center;
+        gap: 20px;
+        z-index: 999;
+        border-bottom: 1px solid #222;
+    }
+
+    /* ESTA ES LA CLASE QUE ACTIVA EL JAVASCRIPT */
+    .nav-links.active {
+        display: flex !important; /* Obligamos a que se vea */
+        animation: slideDown 0.3s ease-out;
+    }
+
+    /* Estilo del botón MENU */
+    .menu-btn {
+        display: block !important;
+        font-size: 11px;
+        font-weight: 900;
+        border: 1px solid #fff;
+        padding: 6px 12px;
+        cursor: pointer;
+        letter-spacing: 1px;
+    }
+}
+
+/* Animación para que baje suave */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* En computadora el menú siempre se ve y el botón desaparece */
+@media (min-width: 1025px) {
+    .menu-btn { display: none !important; }
+    .nav-links { display: flex !important; flex-direction: row !important; position: static !important; width: auto !important; padding: 0 !important; background: transparent !important; }
+}
