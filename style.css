@@ -219,3 +219,47 @@ nav {
     .menu-btn { display: none !important; }
     .nav-links { display: flex !important; flex-direction: row !important; position: static !important; width: auto !important; padding: 0 !important; background: transparent !important; }
 }
+/* --- ESTILOS ESPECÍFICOS DE CONTACTO --- */
+#corp-form {
+    text-align: left;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Una sola columna en móvil */
+    gap: 20px;
+}
+
+.btn-submit-corp {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 18px 40px;
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    width: 100%; /* Ancho completo en móvil */
+    text-transform: uppercase;
+}
+
+/* Ajuste para computadora */
+@media (min-width: 1024px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr; /* Dos columnas en PC */
+        gap: 30px;
+    }
+    .btn-submit-corp {
+        width: auto;
+    }
+    .corporate-container h1 {
+        font-size: 4rem !important;
+    }
+}
